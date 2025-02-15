@@ -1,0 +1,82 @@
+<div class="main-container">
+  <app-sidebar></app-sidebar>
+<div class="container">
+    <h2>Gestion des Tâches</h2>
+  
+    <!-- 📌 Formulaire d'ajout de tâche -->
+    <div class="card">
+      <h3>Ajouter une Tâche</h3>
+      <form (submit)="ajouterTache(); $event.preventDefault()">
+        <label>Nom:</label>
+        <input type="text" [(ngModel)]="nouvelleTache.titre" name="nom" required>
+  
+        <label>Description:</label>
+        <textarea [(ngModel)]="nouvelleTache.description" name="description"></textarea>
+  
+        <label>Date Limite:</label>
+        <input type="date" [(ngModel)]="nouvelleTache.dateLimite" name="dateLimite">
+  
+        <label>Responsable:</label>
+        <input type="text" [(ngModel)]="nouvelleTache.responsable" name="responsable">
+  
+        <button type="submit">Ajouter</button>
+      </form>
+    </div>
+  
+    <!-- 📌 Liste des tâches -->
+    <div class="card">
+      <h3>Liste des Tâches</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Date Limite</th>
+            <th>Responsable</th>
+            <th>Terminé</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let tache of taches">
+            <td>{{ tache.nom }}</td>
+            <td>{{ tache.description }}</td>
+            <td>{{ tache.dateLimite | date: 'yyyy-MM-dd' }}</td>
+            <td>{{ tache.responsable }}</td>
+            <td>
+              <input type="checkbox" [(ngModel)]="tache.estTerminee" disabled>
+            </td>
+            <td>
+              <button (click)="selectionnerTache(tache)">Modifier</button>
+              <button (click)="supprimerTache(tache.id)" class="danger">Supprimer</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- 📌 Formulaire de modification -->
+    <div *ngIf="tacheSelectionnee" class="card">
+      <h3>Modifier Tâche</h3>
+      <form (submit)="modifierTache(); $event.preventDefault()">
+        <label>Nom:</label>
+        <input type="text" [(ngModel)]="tacheSelectionnee.nom" name="nom" required>
+  
+        <label>Description:</label>
+        <textarea [(ngModel)]="tacheSelectionnee.description" name="description"></textarea>
+  
+        <label>Date Limite:</label>
+        <input type="date" [(ngModel)]="tacheSelectionnee.dateLimite" name="dateLimite">
+  
+        <label>Responsable:</label>
+        <input type="text" [(ngModel)]="tacheSelectionnee.responsable" name="responsable">
+  
+        <label>Terminée:</label>
+        <input type="checkbox" [(ngModel)]="tacheSelectionnee.estTerminee" name="estTerminee">
+  
+        <button type="submit">Modifier</button>
+        <button (click)="tacheSelectionnee = null" type="button">Annuler</button>
+      </form>
+    </div>
+  </div>
+  

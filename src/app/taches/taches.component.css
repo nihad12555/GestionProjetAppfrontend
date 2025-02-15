@@ -1,0 +1,105 @@
+/* Couleurs principales */
+:root {
+  --primary-color: #007bff; /* Bleu primaire */
+  --secondary-color: #0056b3; /* Bleu plus foncé */
+  --background-color: #f0f8ff; /* Bleu clair pour le fond */
+  --text-color: #333; /* Couleur de texte principale */
+  --white: #ffffff; /* Blanc */
+}
+
+/* Style général */
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+.main-container {
+  display: flex; /* Active Flexbox */
+  height: 100vh; /* Prend toute la hauteur de la fenêtre */
+}
+
+.app-sidebar {
+  width: 250px; /* Largeur de la sidebar */
+  background-color: #f4f4f4; /* Couleur de fond de la sidebar */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Ombre pour un effet élégant */
+}
+
+.container {
+  max-width: 800px; /* Réduire la largeur maximale du conteneur */
+  margin: 0 auto; /* Centrer le conteneur */
+  padding: 10px; /* Réduire le padding */
+}
+
+
+h2, h3 {
+  color: var(--primary-color);
+}
+
+/* Cartes */
+.card {
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card {
+  max-width: 400px; /* Réduire la largeur du formulaire */
+  margin: 0 auto; /* Centrer le formulaire */
+  padding: 15px; /* Réduire le padding */
+}
+
+.card h3 {
+  font-size: 18px; /* Réduire la taille du titre */
+  margin-bottom: 10px; /* Réduire la marge sous le titre */
+}
+
+form label {
+  font-size: 14px; /* Réduire la taille des labels */
+  margin-bottom: 5px; /* Réduire la marge sous les labels */
+}
+
+form input[type="text"],
+form input[type="date"],
+form textarea {
+  padding: 10px; /* Réduire le padding des champs */
+  font-size: 14px; /* Réduire la taille de la police */
+  margin-bottom: 10px; /* Réduire la marge entre les champs */
+  width: 100%; /* Utiliser toute la largeur disponible */
+}
+
+form textarea {
+  min-height: 80px; /* Réduire la hauteur du textarea */
+}
+
+form button {
+  padding: 8px 12px; /* Réduire le padding du bouton */
+  font-size: 14px; /* Réduire la taille de la police du bouton */
+}
+
+.card table {
+  width: 100%; /* Utiliser toute la largeur disponible */
+  font-size: 14px; /* Réduire la taille de la police */
+}
+
+.card table th,
+.card table td {
+  padding: 8px; /* Réduire le padding des cellules */
+}
+
+.card table th {
+  font-size: 14px; /* Réduire la taille de la police des en-têtes */
+}
+
+.card table td input[type="checkbox"] {
+  transform: scale(0.9); /* Réduire la taille de la checkbox */
+}
+
+.card table button {
+  padding: 6px 10px; /* Réduire le padding des boutons */
+  font-size: 12px; /* Réduire la taille de la police des boutons */
+  margin: 2px; /* Réduire la marge entre les boutons */
+}

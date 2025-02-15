@@ -1,0 +1,29 @@
+<div class="dashboard-container">
+  <app-sidebar (projectSelected)="onProjectSelected($event)"></app-sidebar>
+  
+    <main class="main-content">
+      <header class="main-header">
+         <!-- Afficher les détails du projet sélectionné -->
+  <div *ngIf="selectedProject" class="project-details">
+    <h2>{{ selectedProject.name }}</h2>
+    <p><strong>Description:</strong> {{ selectedProject.description }}</p>
+    <p><strong>Statut:</strong> {{ selectedProject.status }}</p>
+    <p><strong>Date de début:</strong> {{ selectedProject.startDate }}</p>
+    <p><strong>Date de fin:</strong> {{ selectedProject.endDate }}</p>
+    <p><strong>Priorité:</strong> {{ selectedProject.priority }}</p>
+  </div>
+        <div class="header-actions">
+          <button class="filter-button">Filtrer ▼</button>
+          <button class="new-task-button">Nouvelle tâche</button>
+        </div>
+      </header>
+  
+      <section class="dashboard-grid">
+        <div class="card">
+          <h2 class="card-title">Tâches</h2>
+          <p>Liste des tâches en cours...</p>
+        </div>
+      </section>
+    </main>
+  </div>
+  

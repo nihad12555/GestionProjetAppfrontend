@@ -1,0 +1,69 @@
+<div class="login-container">
+    <div class="login-box">
+      <div class="login-header">
+        <h2>Connexion</h2>
+        <p>Bienvenue ! Veuillez vous connecter</p>
+      </div>
+  
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <div class="input-container">
+            <i class="fas fa-envelope"></i>
+            <input 
+              type="email" 
+              id="email" 
+              formControlName="email" 
+              [ngClass]="{'error': submitted && loginForm.get('email')?.errors}"
+              placeholder="Entrez votre email"
+            />
+          </div>
+          <div class="error-message" *ngIf="submitted && loginForm.get('email')?.errors">
+            <span *ngIf="loginForm.get('email')?.errors?.['required']">L'email est requis</span>
+            <span *ngIf="loginForm.get('email')?.errors?.['email']">Email invalide</span>
+          </div>
+        </div>
+  
+        <!-- Mot de passe -->
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <div class="input-container">
+            <i class="fas fa-lock"></i>
+            <input 
+              type="password" 
+              id="password" 
+              formControlName="password" 
+              [ngClass]="{'error': submitted && loginForm.get('password')?.errors}" 
+              placeholder="Entrez votre mot de passe"
+            />
+            <i class="fas fa-eye-slash toggle-password" (click)="togglePassword()"></i>
+          </div>
+          <div class="error-message" *ngIf="submitted && loginForm.get('password')?.errors">
+            <span *ngIf="loginForm.get('password')?.errors?.['required']">Le mot de passe est requis</span>
+          </div>
+        </div>
+  
+        <!-- Options -->
+        <div class="form-options">
+          <label class="remember-me">
+            <input type="checkbox" formControlName="rememberMe" />
+            <span>Se souvenir de moi</span>
+          </label>
+          <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+        </div>
+  
+        <!-- Bouton de connexion -->
+        <button type="submit" [disabled]="loading" class="login-button">
+          <span *ngIf="!loading">Se connecter</span>
+          <div *ngIf="loading" class="spinner"></div>
+        </button>
+      </form>
+  
+      <!-- Pied de page -->
+      <div class="login-footer">
+        <p>Pas encore de compte ? <a (click)="goToRegister()">S'inscrire</a></p>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,94 @@
+<nav class="sidebar">
+  <h1 class="logo">ProjectFlow</h1>
+
+  <div class="navigation">
+      <button class="nav-item">🏠 Tableau de bord</button>
+      <button class="nav-item" (click)="goToTaches()">📋 Tâches</button>
+      <button class="nav-item">📅 Calendrier</button>
+      <button class="nav-item">👥 Équipe</button>
+  </div>
+
+  <div class="projects-section">
+    <!-- Bouton pour ouvrir le formulaire -->
+<div class="projects-header">
+  <h2>Projets</h2>
+  <button class="add-project-btn" (click)="showAddProjectForm = true">➕</button>
+</div>
+
+<div class="projects-list">
+  <div *ngFor="let project of projects" class="project-item">
+    <button (click)="selectProject(project)">
+      {{ project.name }}
+    </button>
+  </div>
+</div>
+
+
+<!-- POPUP MODALE -->
+<div *ngIf="showAddProjectForm" class="modal-overlay">
+  <div class="modal-content">
+    <button class="close-button" (click)="showAddProjectForm = false">&times;</button>
+
+    <div class="modal-header">
+      <h2>Créer un nouveau projet</h2>
+      <p>Ajoutez les détails de votre projet ci-dessous</p>
+    </div>
+
+    <form class="add-project-form">
+      <!-- Nom du projet -->
+      <div class="form-group">
+        <label>Nom du projet</label>
+        <input type="text" [(ngModel)]="newProjectName" name="name" placeholder="Nom du projet">
+      </div>
+
+      <!-- Description -->
+      <div class="form-group">
+        <label>Description</label>
+        <textarea [(ngModel)]="newProjectDescription" name="description" placeholder="Description du projet"></textarea>
+      </div>
+
+       <!-- Statut -->
+       <div class="form-group">
+        <label>Statut</label>
+        <select [(ngModel)]="newProjectStatus" name="statut">
+          <option value="En cours">En cours</option>
+          <option value="Terminé">Terminé</option>
+          <option value="Suspendu">Suspendu</option>
+        </select>
+      </div>
+
+      <!-- Dates -->
+      <div class="form-group">
+        <label>Date de début</label>
+        <input type="date" [(ngModel)]="newProjectStartDate" name="date de début">
+      </div>
+
+      <div class="form-group">
+        <label>Date de fin prévue</label>
+        <input type="date" [(ngModel)]="newProjectEndDate" name="date de fin prévue">
+      </div>
+
+      <!-- Priorité -->
+      <div class="form-group">
+        <label>Priorité</label>
+        <select [(ngModel)]="newProjectPriority" name="Priorité">
+          <option value="Basse">Basse</option>
+          <option value="Moyenne">Moyenne</option>
+          <option value="Élevée">Élevée</option>
+        </select>
+      </div>
+
+      
+
+      <!-- Boutons -->
+      <div class="form-actions">
+        <button type="button" class="submit-button" (click)="addProject()">Créer</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+    
+</div>
+
+  
